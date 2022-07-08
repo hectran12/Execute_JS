@@ -3,13 +3,10 @@ let listCode = [];
 function eval_code (code, name_function) {
     try {
         let function_code = `
-
             function ${name_function}() {
 
                 ${code}
-
             }
-        
         `;
         
         eval(code);
