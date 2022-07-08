@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        }
+
+        td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+        }
+
+        tr:nth-child(even) {
+        background-color: #dddddd;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        Name function: <input type="text" id="name">
+        <br><br>
+        Code: <textarea id="code"></textarea>
+        <br><br>
+        <button onclick="action_code()">Run code</button>
+        <button onclick="loadHistory()">Load history</button>
+        <button onclick="Copyallcode()">Copy all code</button>
+        <br><br>
+        <table id="task">
+
+        </table>
+    </center>
+    <script>
+
+        // exec code
+        function action_code () {
+            const name = document.getElementById("name").value;
+            const code = document.getElementById("code").value;
+            eval_code(code,name);
+        }
+
+        function Copyallcode () {
+            let text = "";
+            getAllHistory().forEach(phantu => {
+                text += phantu + "\n\n";
+            });
+            console.log(text);
+            copy(btoa(text));
+        }
+    </script>
+    <script src="script/eval.js"></script>
+    <script src="script/main.js"></script>
+</body>
+</html>
