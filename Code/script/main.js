@@ -22,11 +22,19 @@ function addElement (value, index) {
             <td>${index+1}</td>
             <td>${value}</td>
             <td>
-            <button onclick='copy("${btoa(value)}")'>Copy</button>
+            <button onclick='copy("${encodeUnicode(value)}")'>Copy</button>
             <button onclick='removeCode(${index})'>Delete</button>
             </td>
         </tr>
     `;
+}
+
+
+function encodeUnicode(str) {
+    return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g,
+        function toSolidBytes(match, p1) {
+            return String.fromCharCode('0x' + p1);
+    }));
 }
 
 function copy (base64) {
