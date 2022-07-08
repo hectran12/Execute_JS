@@ -40,6 +40,7 @@
     <script>
 
         // exec code
+        // exec code
         function action_code () {
             const name = document.getElementById("name").value;
             const code = document.getElementById("code").value;
@@ -52,7 +53,9 @@
                 text += phantu + "\n\n";
             });
             console.log(text);
-            copy(btoa(text));
+            navigator.clipboard.writeText(text).then(res => {
+                alert("Copy thành công!");
+            });
         }
     </script>
     <script src="script/eval.js"></script>
